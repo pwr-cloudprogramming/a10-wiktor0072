@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signIn, signUp } from './authService';
+import { signIn, signUp } from './authService.ts';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -20,7 +20,7 @@ const LoginPage = () => {
       if (session && typeof session.AccessToken !== 'undefined') {
         sessionStorage.setItem('accessToken', session.AccessToken);
         if (sessionStorage.getItem('accessToken')) {
-          navigate('/home');
+          window.location.href = '/home';
         } else {
           console.error('Session token was not set properly.');
         }

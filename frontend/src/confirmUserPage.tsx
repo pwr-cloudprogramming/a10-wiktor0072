@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { confirmSignUp } from './authService';
+import { confirmSignUp } from './authService.ts';
 
 const ConfirmUserPage = () => {
   const navigate = useNavigate();

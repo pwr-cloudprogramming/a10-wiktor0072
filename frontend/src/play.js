@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Client} from '@stomp/stompjs'
+import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 const url = 'http://localhost:8080';
 
@@ -29,7 +30,7 @@ function PlayPage() {
 
     const handleLogout = async () => {
         sessionStorage.clear();
-        navigate('/login');
+        window.location.href = '/login';
       };
 
     useEffect(() => {

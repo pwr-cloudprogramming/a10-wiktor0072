@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './loginPage';
+import LoginPage from './loginPage.tsx';
 import PlayPage from './play.js';
-import ConfirmUserPage from './confirmUserPage';
+import ConfirmUserPage from './confirmUserPage.tsx';
 import './App.css'
 
 const App = () => {
