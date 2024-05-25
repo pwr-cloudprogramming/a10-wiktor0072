@@ -13,7 +13,7 @@ function parseJwt (token) {
     return JSON.parse(jsonPayload);
 }
 
-function App() {
+function PlayPage() {
     const [gameId, setGameId] = useState('');
     const [playerType, setPlayerType] = useState('');
     const [turns, setTurns] = useState([["#", "#", "#"], ["#", "#", "#"], ["#", "#", "#"]]);
@@ -274,4 +274,4 @@ function App() {
 
 }
 
-export default App;
+export default PlayPage;
