@@ -2,8 +2,17 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Client} from '@stomp/stompjs'
 import axios from 'axios';
+const ip = window.location.hostname;
+const url = 'http://${ip}:8080';
 
-const url = 'http://localhost:8080';
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+}
 
 function App() {
     const [gameId, setGameId] = useState('');
@@ -19,6 +28,11 @@ function App() {
 
     const [currentTurn, setCurrentTurn] = useState('');
 
+    const handleLogout = async () => {
+        sessionStorage.clear();
+        navigate('/login');
+      };
+
     useEffect(() => {
         if (gameId) {
             connectToSocket(gameId);
@@ -28,7 +42,7 @@ function App() {
     const connectToSocket = (gameId) => {
         const client = new Client();
         client.configure({
-            brokerURL: 'ws://localhost:8080/gameplay',
+            brokerURL: 'ws://${ip}:8080/gameplay',
             reconnectDelay: 5000,
             onConnect: () => {
                 console.log('Connected');
@@ -203,7 +217,11 @@ function App() {
                 {/*    color: '#fff'*/}
                 {/*}}>Connect to Specific Game*/}
                 {/*</button>*/}
-
+                <div>
+                {/* Dodaj przycisk do wylogowania */}
+                    <button onClick={handleLogout}>Logout</button>
+                {/* Dodaj resztę treści swojej aplikacji */}
+                </div>
                 <ul id="gameBoard" style={{listStyle: 'none', padding: 0}}>
                     {turns.map((row, i) =>
                         row.map((cell, j) => (
