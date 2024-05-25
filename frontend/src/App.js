@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Client} from '@stomp/stompjs'
 import axios from 'axios';
-const ip = window.location.hostname;
 const url = 'http://localhost:8080';
 
 function parseJwt (token) {
