@@ -3,7 +3,7 @@ import './App.css';
 import {Client} from '@stomp/stompjs'
 import axios from 'axios';
 const ip = window.location.hostname;
-const url = 'http://${ip}:8080';
+const url = 'http://localhost:8080';
 
 function parseJwt (token) {
     var base64Url = token.split('.')[1];
@@ -42,7 +42,7 @@ function App() {
     const connectToSocket = (gameId) => {
         const client = new Client();
         client.configure({
-            brokerURL: 'ws://${ip}:8080/gameplay',
+            brokerURL: 'ws://localhost:8080/gameplay',
             reconnectDelay: 5000,
             onConnect: () => {
                 console.log('Connected');
