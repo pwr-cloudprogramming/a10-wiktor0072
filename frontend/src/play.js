@@ -79,7 +79,11 @@ function PlayPage() {
             return;
         }
         try {
-            const response = await axios.post(url + "/game/start", {login: login});
+            const token = sessionStorage.getItem('accessToken');
+            const response = await axios.post(url + "/game/start", {login: login},
+            {
+                headers: { Authorization: `Bearer ${token}` }
+            });
             setGameId(response.data.gameId);
             setPlayerType('X');
             setCurrentTurn("X")
@@ -97,7 +101,10 @@ function PlayPage() {
 
     const hardReset = async () => {
         setTurns([["#", "#", "#"], ["#", "#", "#"], ["#", "#", "#"]]);
-        await axios.post(url + "/game/reset/" + gameId)
+        const token = sessionStorage.getItem('accessToken');
+        await axios.post(url + "/game/reset/" + gameId, {} ,{
+            headers: { Authorization: `Bearer ${token}` }
+        })
         setGameOn(true);
     }
 
@@ -107,7 +114,10 @@ function PlayPage() {
             return;
         }
         try {
-            const response = await axios.post(url + "/game/connect/random", {login});
+            const token = sessionStorage.getItem('accessToken');
+            const response = await axios.post(url + "/game/connect/random", {login}, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
             setGameId(response.data.gameId);
             setPlayerType('O');
             reset();
@@ -127,11 +137,14 @@ function PlayPage() {
         if (!gameOn || currentTurn !== playerType) return;
 
         try {
+            const token = sessionStorage.getItem('accessToken');
             const response = await axios.post(url + "/game/gameplay", {
                 type: playerType,
                 coordinateX: xCoordinate,
                 coordinateY: yCoordinate,
                 gameId,
+            }, {
+                headers: { Authorization: `Bearer ${token}` }
             });
             displayResponse(response.data, playerType);
         } catch (error) {
