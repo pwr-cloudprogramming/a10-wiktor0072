@@ -24,12 +24,12 @@
 
 Screenshots of configured AWS services. Screenshots of your application running.
 
-![Docker compose](screeny1/compose.png)
-![EC2](screeny1/ec2.png)
-![Security](screeny1/ec2-security.png)
-![Game1](screeny1/gra1.png)
-![Game2](screeny1/gra2.png)
-![Game3](screeny1/gra3.png)
+![Docker compose](img/userpool.png)
+![EC2](img/login.png)
+![Security](img/signup.png)
+![Game1](img/mail.png)
+![Game2](img/confirm.png)
+![Game3](img/mail.png)
 
 
 # Reflections
