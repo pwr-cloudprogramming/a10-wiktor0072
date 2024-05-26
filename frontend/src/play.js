@@ -41,9 +41,13 @@ function PlayPage() {
 
     const connectToSocket = (gameId) => {
         const client = new Client();
+        const token = sessionStorage.getItem('accessToken');
         client.configure({
             brokerURL: 'ws://localhost:8080/gameplay',
             reconnectDelay: 5000,
+            connectHeaders: {
+                Authorization: `Bearer ${token}`,
+            },
             onConnect: () => {
                 console.log('Connected');
 
