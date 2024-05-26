@@ -14,16 +14,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RestController
 @Slf4j
 @AllArgsConstructor
 @RequestMapping("/game")
-@CrossOrigin("*")
 public class GameController {
 
     private final GameService gameService;
     private final SimpMessagingTemplate simpMessagingTemplate;
 
+    @CrossOrigin("*")
     @PostMapping("/start")
     public ResponseEntity<Game> start(@RequestBody Player player) {
         log.info("start game request: {}", player);
