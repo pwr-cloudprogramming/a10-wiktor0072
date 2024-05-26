@@ -30,6 +30,7 @@ Screenshots of configured AWS services. Screenshots of your application running.
 ![Game1](img/mail.png)
 ![Game2](img/confirm.png)
 ![Game3](img/mail.png)
+![Game4](img/game.png)
 
 
 # Reflections
