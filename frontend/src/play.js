@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Client} from '@stomp/stompjs'
 import { Navigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from './axiosConfig.js';
 const url = 'http://localhost:8080';
 
 function parseJwt (token) {
