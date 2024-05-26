@@ -49,7 +49,8 @@ I overcame several obstacles during the project, including:
 - Creating user pool in Cognito
 - Creating user pool client in Cognito
 - Configuring Spring Security with Cognito in order to authenticate users, configuring CORS, and sending tokens to backend
-- Using Cognito authentication in frontend part of the app
+- Confiuring frontend part written in React with Cognito with config.json file
+- Using Cognito authentication in frontend part of the app, in order to redirect to page with game under condition of successful sign in
   
 To overcome these obstacles, I found the following resources most helpful:
 
