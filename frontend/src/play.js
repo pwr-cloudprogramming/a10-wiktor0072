@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Client} from '@stomp/stompjs'
-import { Navigate } from 'react-router-dom';
+import { useLocation, Navigate } from 'react-router-dom';
 import axios from './axiosConfig.js';
 import jwtDecode from 'jwt-decode';
 const url = 'http://localhost:8080';
@@ -31,12 +31,15 @@ function PlayPage() {
 
 
     const [currentTurn, setCurrentTurn] = useState('');
+    const location = useLocation();
+    const email = location.state?.email;
+    console.log("email: " + email)
 
     useEffect(() => {
+        
         const token = sessionStorage.getItem('accessToken');
         if (token) {
-            const decodedToken = parseJwt(token);
-            setLogin(decodedToken['cognito:username'] || decodedToken.username);
+            setLogin(email);
         }
     }, []);
 

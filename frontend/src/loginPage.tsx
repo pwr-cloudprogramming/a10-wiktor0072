@@ -20,8 +20,8 @@ const LoginPage = () => {
       if (session && typeof session.AccessToken !== 'undefined') {
         sessionStorage.setItem('accessToken', session.AccessToken);
         if (sessionStorage.getItem('accessToken')) {
-          window.location.href = '/home';
-          // navigate('/', { state: { email } });
+          navigate('/', { state: { email } });
+          // window.location.href = '/home';
         } else {
           console.error('Session token was not set properly.');
         }
