@@ -3,7 +3,9 @@ import './App.css';
 import {Client} from '@stomp/stompjs'
 import { Navigate } from 'react-router-dom';
 import axios from './axiosConfig.js';
+import jwtDecode from 'jwt-decode';
 const url = 'http://localhost:8080';
+
 
 function parseJwt (token) {
     var base64Url = token.split('.')[1];
@@ -15,6 +17,8 @@ function parseJwt (token) {
 }
 
 function PlayPage() {
+
+
     const [gameId, setGameId] = useState('');
     const [playerType, setPlayerType] = useState('');
     const [turns, setTurns] = useState([["#", "#", "#"], ["#", "#", "#"], ["#", "#", "#"]]);
@@ -27,6 +31,14 @@ function PlayPage() {
 
 
     const [currentTurn, setCurrentTurn] = useState('');
+
+    useEffect(() => {
+        const token = sessionStorage.getItem('accessToken');
+        if (token) {
+            const decodedToken = parseJwt(token);
+            setLogin(decodedToken['cognito:username'] || decodedToken.username);
+        }
+    }, []);
 
     const handleLogout = async () => {
         sessionStorage.clear();
@@ -42,6 +54,7 @@ function PlayPage() {
     const connectToSocket = (gameId) => {
         const client = new Client();
         const token = sessionStorage.getItem('accessToken');
+
         client.configure({
             brokerURL: 'ws://localhost:8080/gameplay',
             reconnectDelay: 5000,
@@ -170,7 +183,7 @@ function PlayPage() {
         }
     };
     const handleLoginChange = (event) => {
-        setLogin(event.target.value);
+        // setLogin(event.target.value);
     };
 
     const handleGameIdChange = (event) => {
