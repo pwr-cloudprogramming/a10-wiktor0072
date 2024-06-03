@@ -16,7 +16,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={isAuthenticated() ? <LoginPage /> : <PlayPage />} />
+        <Route path="/" element={isAuthenticated() ? <PlayPage /> : <LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/confirm" element={<ConfirmUserPage />} />
         <Route path="/home" element={isAuthenticated() ? <PlayPage /> : <Navigate replace to="/login" />} />
