@@ -1,5 +1,5 @@
 {
-    "region": "REGION",
-    "userPoolId": "USERPOOLID",
-    "clientId": "CLIENTID"
+    "region": "us-east-1",
+    "userPoolId": "us-east-1_lOQ9rE92X",
+    "clientId": "4ehiqkgllcpj15nag35h9kf4d6"
 }
