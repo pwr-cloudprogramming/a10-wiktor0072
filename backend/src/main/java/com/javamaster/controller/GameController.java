@@ -10,6 +10,7 @@ import com.javamaster.model.Player;
 import com.javamaster.service.GameService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @AllArgsConstructor
 @RequestMapping("/game")
+@ComponentScan(basePackages = {"com.aws.rest"})
 public class GameController {
 
     private final GameService gameService;
